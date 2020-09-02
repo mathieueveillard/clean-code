@@ -1,0 +1,85 @@
+# Meta
+
+## Argumentaire
+
+Le but d'une formation de 2j n'est pas de faire des experts mais d'éveiller ou de renforcer la curiosité en proposant des concepts, exemples, références.
+Je cherche à fournir aux participants des outils rhétorique. Ils leur permettent de rationnaliser auprès de leur collègues. L'idée est de faciliter l'introduction d'une nouvelle pratique.
+
+Notre point est vous devriez faire du Clean Code. Comment rationnaliser à cette conclusion ? En passant chaque argument dans quelques tests :
+
+Exemple d'argument : Vous devriez lire car la lecture diminue le stress.
+
+A. Test de vérité : données pour encrer les prémisses dans le réel (étude et données de l'effet de la lecture sur le stress).
+
+B. Test de validité : quand bien même la prémmisse est vraie, est-ce que la conclusion suit ?
+
+- efficacité (ex. on a prouvé que la lecture diminue le stress mais est-ce que prendre un bain ne serait pas mieux ?)
+- utilité (ex. on peut prouver que la lecture diminue le stress, mais est-ce utile ?)
+- faisabilité (ex. ok on a prouvé que la lecture diminue le stress, mais est-ce faisable, quid de ce qui n'aiment pas lire ?)
+- moralité (ex. pourquoi voulez-vous forcer les gens à réduire leur stress)
+
+Appliquée à Clean Code on pourrait avoir un raisonnement du type :
+
+Conclusion : il faut faire du clean code.
+Prémisse : parce qu'il y aura tj du code, parce le bad code peut produire des dégâts...
+Puisque (garantie) il n'existe pas de meilleur moyen...
+
+Source :https://www.youtube.com/watch?v=uOItuWQkGoM&list=PLau9Sv1xCYFKlbp6wD7PetjQ8nApwcotL&index=13&t=0s
+
+## Pédagogie
+
+### Utiliser le template 4C pour structurer chaque thème ou objectif
+
+A. Objective (subject, verb, object)
+
+A1. Connection (ex. pour vous c'est quoi Clean Code ?)
+A2. Concepts (ex. Clean Code c'est X)
+A3. Concrete practice (ex. exercices d'application, kata)
+A4. Conclusion (ex. laisser les binômes tirer une morale, ou une actions au retour au travail)
+
+### Quelques apports de la science de l'enseignement
+
+- Souligner le but de façon répétée.
+- Utiliser des conceps maps (https://cmap.ihmc.us/)
+- Partager des exercices résolus puis des exemples avec de plus en plus de trous.
+
+https://twitter.com/ChatSceptique/status/1300798775217262598?s=19
+
+# Commentaire sur Day 1
+
+Inscription dans un contexte : ok
+
+Nothing more than a spark (clean code le mentionne aussi : knowledge and work)
+
+Pourquoi le test est important ? pour vérifier que ça marche ! On revient aux bases du test manuel. Mentionner James Marcus Bach. Parler des organisation tradi ou agile de séparation entre dev et testeur ?
+
+BDD tri amigos : testeur casse, dev construit.
+
+Mentionner Living documentation.
+
+Si le test échoue, c'est peut-être le test qui est faux ou le code qui est faux.
+Un bug n'est pas forcément désirable à supprimer. car le code qui l'utilise peut l'utiliser comme contrat. OK
+
+Le test c'est un but à atteindre.
+
+Test anatomy : given (permet le repeatable), when (permet le fast), then (self validating).
+On peut introduire pour la pédagogie un test sans given/then. L'introduction en étapes peut aussi servir à commencer à faire des tests pas parfait plutôt que ne jamais faire des tests parfaits. Ce qui est difficile sur du legacy c'est souvent le given.
+
+Vérifier la différence entre line et branch. Pas sûr que ce soit une différence pertinente.
+https://stackoverflow.com/questions/8229236/differences-between-line-and-branch-coverage
+
+Test fragile : les test double n'est pas le mal. J'aimerai introduire le vocabulaire "collaborateur" versus "implémentation". Le collaborateur fait partie du contrat mais pas l'implémentation.
+
+```java
+int x = obj.get(); // style return
+
+obj.get(callback); // style collaborateur
+int x1 = callback.get();
+```
+
+Si la callback ne fait pas partie de l'interface c'est le contrat.
+Si la callback fait partie du constructeur.
+
+Le point précédent est-il dépendant du langage (marche pas en JS) ?
+
+Greater isolation. Introduire un vocabulaire pour l'isolation d'un bout de scénario (temporel) du point de vue user et pour l'isolation d'un composant de ses dépendances (spacial). Le diagramme de séquence UML pourrait être un point de départ de représentation.
